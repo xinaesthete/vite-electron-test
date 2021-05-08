@@ -1,7 +1,7 @@
 import {app, BrowserWindow} from 'electron';
 import {join} from 'path';
 import {URL} from 'url';
-
+import server from './server';
 
 const isSingleInstance = app.requestSingleInstanceLock();
 
@@ -9,27 +9,15 @@ if (!isSingleInstance) {
   app.quit();
   process.exit(0);
 }
-
+console.log('can you hear me? crying all over town');
+server();
 // app.disableHardwareAcceleration(); //WTF???
-
 /**
  * Workaround for TypeScript bug
  * @see https://github.com/microsoft/TypeScript/issues/41468#issuecomment-727543400
  */
 const env = import.meta.env;
 
-
-// Install "Vue.js devtools"
-if (env.MODE === 'development') {
-  app.whenReady()
-    .then(() => import('electron-devtools-installer'))
-    .then(({default: installExtension, VUEJS3_DEVTOOLS}) => installExtension(VUEJS3_DEVTOOLS, {
-      loadExtensionOptions: {
-        allowFileAccess: true,
-      },
-    }))
-    .catch(e => console.error('Failed install extension:', e));
-}
 
 let mainWindow: BrowserWindow | null = null;
 

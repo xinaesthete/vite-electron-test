@@ -37,7 +37,9 @@ export default defineComponent({
   name: 'HelloWorld',
   setup() {
     const count = ref(0);
-
+    fetch('http://localhost:8101/ping').then(async (res)=> {
+      console.log(await res.text());
+    });
     return {count};
   },
 });
