@@ -9,7 +9,6 @@ if (!isSingleInstance) {
   app.quit();
   process.exit(0);
 }
-console.log('can you hear me? crying all over town');
 server();
 // app.disableHardwareAcceleration(); //WTF???
 /**

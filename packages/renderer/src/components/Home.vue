@@ -32,11 +32,17 @@
 
 <script lang="ts">
 import {defineComponent, ref} from 'vue';
+import {io} from 'socket.io-client';
 
 export default defineComponent({
   name: 'HelloWorld',
   setup() {
     const count = ref(0);
+    // const ws = io({port: '8101'});
+    const ws = io('http://localhost:8101');
+    ws.on('connect', () => {
+      console.log('ws connected');
+    });
     fetch('http://localhost:8101/ping').then(async (res)=> {
       console.log(await res.text());
     });

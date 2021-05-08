@@ -45,6 +45,7 @@ export default defineConfig({
         'electron',
         'electron-updater',
         'express',
+        'socket.io', //https://github.com/socketio/socket.io/issues/3859
         ...builtinModules,
       ],
       output: {
