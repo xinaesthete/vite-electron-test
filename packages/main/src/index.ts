@@ -10,7 +10,7 @@ if (!isSingleInstance) {
   process.exit(0);
 }
 
-app.disableHardwareAcceleration();
+// app.disableHardwareAcceleration(); //WTF???
 
 /**
  * Workaround for TypeScript bug
@@ -66,7 +66,10 @@ const createWindow = async () => {
     ? env.VITE_DEV_SERVER_URL
     : new URL('../renderer/dist/index.html', 'file://' + __dirname).toString();
 
-
+  if (typeof pageUrl !== 'string') {
+    alert('no pageUrl, no ts error');
+    return;
+  }
   await mainWindow.loadURL(pageUrl);
 };
 

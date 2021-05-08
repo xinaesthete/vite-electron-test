@@ -22,7 +22,7 @@
 
   <hr>
   <button @click="count++">
-    count is: {{ count }}
+    count is: {{ count }} legible, most other text is not
   </button>
   <p>
     Edit
