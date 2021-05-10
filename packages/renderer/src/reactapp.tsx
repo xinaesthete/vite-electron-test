@@ -4,7 +4,7 @@ import {io} from 'socket.io-client';
 // import QR from 'react-qr-code'
 import QR from 'qrcode.react';
 import Test from '/@/TestComponent';
-import m from '/@common/model';
+import m from '@common/model';
 import './App.css';
 
 function App() {

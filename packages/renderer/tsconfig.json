@@ -7,7 +7,7 @@
     "skipLibCheck": false,
     "paths": {
       "/@/*": [ "./src/*" ],
-      "/@common/*": ["../common/*"]
+      "@common/*": ["../common/*"]
     },
     "lib": ["ESNext", "dom", "dom.iterable"]
   },

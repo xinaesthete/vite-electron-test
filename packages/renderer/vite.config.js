@@ -25,7 +25,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '/@/': path.join(PACKAGE_ROOT, 'src') + '/',
-      '/@common/': path.resolve(PACKAGE_ROOT, '../common') + '/',
+      '@common/': path.resolve(PACKAGE_ROOT, '../common') + '/',
     },
   },
   plugins: [reactRefresh(), tsconfigPaths({projects: ['.']})],

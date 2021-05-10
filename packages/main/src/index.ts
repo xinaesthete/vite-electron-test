@@ -2,6 +2,7 @@ import {app, BrowserWindow} from 'electron';
 import {join} from 'path';
 import {URL} from 'url';
 import server from './server';
+import test from '@common/model';
 
 const isSingleInstance = app.requestSingleInstanceLock();
 
@@ -11,6 +12,7 @@ if (!isSingleInstance) {
 }
 server();
 // app.disableHardwareAcceleration(); //WTF???
+console.log('imported from @common/model: ' + test);
 /**
  * Workaround for TypeScript bug
  * @see https://github.com/microsoft/TypeScript/issues/41468#issuecomment-727543400
