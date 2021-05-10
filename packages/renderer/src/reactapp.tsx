@@ -4,6 +4,7 @@ import {io} from 'socket.io-client';
 // import QR from 'react-qr-code'
 import QR from 'qrcode.react';
 import Test from '/@/TestComponent';
+import m from '/@common/model';
 import './App.css';
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-    <h1>Hello World. {message}. How nice that you 
+    <h1>{m} Hello World. {message}. How nice that you 
     remembered {count}, after everything that's happened.</h1>
     <QR value={url} />
     <Test />
