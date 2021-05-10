@@ -18,6 +18,8 @@ ___
 - Found a problem? Pull requests are welcome.
 
 - If you have ideas, questions or suggestions - **Welcome to [discussions](https://github.com/cawa-93/vite-electron-builder/discussions)**. 😊
+
+> PJT: Some notes-to-self regarding this version, which is where I'm simulating configuration of a larger existing project.
 ___
 
 
@@ -33,7 +35,7 @@ That's all you need. 😉
 
 **Note**: This template uses npm v7 feature — [**Installing Peer Dependencies Automatically**](https://github.com/npm/rfcs/blob/latest/implemented/0025-install-peer-deps.md). If you are using a different package manager, you may need to install some peerDependencies manually.
 
-
+> PJT: I think at some point I may have had trouble with `react-qr-code` peer dependencies where it was ok in another project?
 
 
 ## Features
@@ -61,15 +63,14 @@ Vite provides you with many useful features, such as: `TypeScript`, `TSX/JSX`, `
 **Note**: If you do not need a TypeScript, you can easily abandon it. To do this, You do not need to make any bundler configuration changes, etc. Just replace all `.ts` files with `.js` files. Additionally, it will be useful to delete TS-specific files, plug-ins and dependencies like `tsconfig.json`, `@typescript-eslint/*`, etc.
 
 
-### Vue [![Vue version](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/vue?label=%20)][vue] (optional)
-- By default, web pages are built using [Vue]. However, you can easily change it. Or do not use additional frameworks at all. (See [React fork](https://github.com/soulsam480/vite-electron-react-starter))
-- Also, by default, the [vue-router] version [![Vue-router version](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/vue-router?label=%20)][vue-router] is used.
-- Code formatting rules follow the latest Vue recommendations and best practices thanks to [eslint-plugin-vue].
-- Installed [Vue.js devtools beta](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg) with Vue 3 support.
+### React
+> PJT: I've changed this to use React & it seems ok, although I did have some odd teething troubles (ref `react-qr-code` comment above).
 
 See [examples of web pages for different frameworks](https://github.com/vitejs/vite/tree/main/packages/create-app).
 
 ### Continuous Integration
+> PJT: I might want to reduce the extent of this in the short-term pending getting a better understanding.
+
 - The configured workflow for check the types for each push and PR.
 - The configured workflow for check the code style for each push and PR.
 - **Automatic tests** used [spectron]. Simple, automated test check:
@@ -96,7 +97,7 @@ I am actively involved in its development. But I do not guarantee that this temp
 **At the moment, there are the following problems:**
 
 - ⚠ Some files require refactoring.
-- ⚠ Typechecking `renderer` package in CI implemented by [![vue-tsc](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/dev/vue-tsc)][vue-tsc], which has a very early version. This is not a problem if you do not use Vue or TypeScript.
+- ~~⚠ Typechecking `renderer` package in CI implemented by [![vue-tsc](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/dev/vue-tsc)][vue-tsc], which has a very early version. This is not a problem if you do not use Vue or TypeScript.~~ I've changed the `renderer` typechecking to just use `tsc`, but I don't fully understand issues around this & am disabling it by removing it from `"scripts": { "typecheck": "..." }`
 - ⚠ Release notes are created automatically based on commit history. [`.github/actions/release-notes`](.github/actions/release-notes) is used for generation. It may not provide some scenarios. If you encounter a problem - write about it.
 - ⏳ I want to migrate all code base to ESM. But because Nodejs  ecosystem is unprepared I have not known whether this will give more benefits or more inconvenience.
 
