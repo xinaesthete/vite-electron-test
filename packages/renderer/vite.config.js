@@ -6,7 +6,6 @@ import { builtinModules } from 'module';
 import {defineConfig} from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import {loadAndSetEnv} from '../../scripts/loadAndSetEnv.mjs';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 const PACKAGE_ROOT = __dirname;
 //const commonRoot = 
@@ -28,7 +27,7 @@ export default defineConfig({
       '@common/': path.resolve(PACKAGE_ROOT, '../common') + '/',
     },
   },
-  plugins: [reactRefresh(), tsconfigPaths({projects: ['.']})],
+  plugins: [reactRefresh()],
   base: '',
   build: {
     sourcemap: true,
