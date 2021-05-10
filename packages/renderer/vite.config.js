@@ -25,7 +25,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
-      '/@common/': join(PACKAGE_ROOT, '..', 'common') + '/',
+      // '/@common/': join(PACKAGE_ROOT, '..', 'common') + '/',
     },
   },
   plugins: [reactRefresh()],

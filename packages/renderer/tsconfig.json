@@ -9,7 +9,7 @@
       "/@/*": [
         "./src/*"
       ],
-      "/@commmon/*": ["../common/*"]
+      // "/@commmon/*": ["../common/*"]
     },
     "lib": ["ESNext", "dom", "dom.iterable"]
   },
@@ -20,6 +20,6 @@
     "types/**/*.d.ts",
     "../../types/**/*.d.ts",
     "../preload/types/electron-api.d.ts",
-    "../common/**/*.ts"
+    // "../common/**/*.ts"
   ]
 }
