@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {io} from 'socket.io-client'
 import QR from 'react-qr-code'
+import Test from './TestComponent'
 import './App.css'
 
 function App() {
@@ -32,7 +33,9 @@ function App() {
     <div className="App">
     <h1>Hello World. {message}. How nice that you 
     remembered {count}, after everything that's happened.</h1>
+    {/* compile error with the below (or with e.g. <React.StrictMode>) */}
     {/* <QR value={url} /> */}
+    <Test />
     </div>
   )
 }
