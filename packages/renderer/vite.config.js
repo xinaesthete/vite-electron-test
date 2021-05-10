@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 import {chrome} from '../../electron-vendors.config.json';
-import {join} from 'path';
+import path from 'path';
 import { builtinModules } from 'module';
 import {defineConfig} from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
@@ -9,7 +9,7 @@ import {loadAndSetEnv} from '../../scripts/loadAndSetEnv.mjs';
 
 
 const PACKAGE_ROOT = __dirname;
-
+//const commonRoot = 
 /**
  * Vite looks for `.env.[mode]` files only in `PACKAGE_ROOT` directory.
  * Therefore, you must manually load and set the environment variables from the root directory above
@@ -24,8 +24,8 @@ export default defineConfig({
   root: PACKAGE_ROOT,
   resolve: {
     alias: {
-      '/@/': join(PACKAGE_ROOT, 'src') + '/',
-      // '/@common/': join(PACKAGE_ROOT, '..', 'common') + '/',
+      '/@/': path.join(PACKAGE_ROOT, 'src') + '/',
+      '/@common/': path.resolve(PACKAGE_ROOT, '../common') + '/',
     },
   },
   plugins: [reactRefresh()],

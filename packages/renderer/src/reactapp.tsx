@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {io} from 'socket.io-client';
 // import QR from 'react-qr-code'
 import QR from 'qrcode.react';
-import Test from './TestComponent';
+import Test from '/@/TestComponent';
 import './App.css';
 
 function App() {
@@ -34,7 +34,6 @@ function App() {
     <div className="App">
     <h1>Hello World. {message}. How nice that you 
     remembered {count}, after everything that's happened.</h1>
-    {/* compile error with the below (but now <React.StrictMode> works?) */}
     <QR value={url} />
     <Test />
     </div>
