@@ -6,9 +6,7 @@
     "esModuleInterop": false,
     "skipLibCheck": false,
     "paths": {
-      "/@/*": [
-        "./src/*"
-      ],
+      "/@/*": [ "./src/*" ],
       "/@common/*": ["../common/*"]
     },
     "lib": ["ESNext", "dom", "dom.iterable"]
