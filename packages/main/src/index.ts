@@ -2,7 +2,7 @@ import {app, BrowserWindow} from 'electron';
 import {join} from 'path';
 import {URL} from 'url';
 import server from './server';
-import test from '@common/model';
+import {htmlPort} from '@common/network';
 
 const isSingleInstance = app.requestSingleInstanceLock();
 
@@ -12,7 +12,6 @@ if (!isSingleInstance) {
 }
 server();
 // app.disableHardwareAcceleration(); //WTF???
-console.log('imported from @common/model: ' + test);
 /**
  * Workaround for TypeScript bug
  * @see https://github.com/microsoft/TypeScript/issues/41468#issuecomment-727543400
@@ -53,7 +52,8 @@ const createWindow = async () => {
    */
   const pageUrl = env.MODE === 'development'
     ? env.VITE_DEV_SERVER_URL
-    : new URL('../renderer/dist/index.html', 'file://' + __dirname).toString();
+    : env.MODE === 'test' ? new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
+    : 'http://localhost:' + htmlPort;
 
   if (typeof pageUrl !== 'string') {
     alert('no pageUrl, no ts error');

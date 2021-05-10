@@ -5,37 +5,41 @@ import {io} from 'socket.io-client';
 import QR from 'qrcode.react';
 import Test from '/@/TestComponent';
 import m from '@common/model';
+import {htmlPort, apiPort} from '@common/network';
 import './App.css';
 
 function App() {
   const [message, setMessage] = React.useState('not connected');
-  const [url, setURL] = React.useState('http://localhost:8101');
+  const [url, setURL] = React.useState(`http://${globalThis.location.hostname}`);
   const [count, setCount] = React.useState(0);
   const incrementCount = () => {
     console.log('increment ' + count);
     setCount(c => c+1);
   };
   React.useEffect(()=>{
-    const ws = io('http://localhost:8101');
+    const api = `${url}:${apiPort}`;
+    const ws = io(api);
     incrementCount();
     ws.on('connect', () => {
       incrementCount();
       setMessage('connected');
     });
     ws.on('set url', (newUrl: string) => {
-      setURL(newUrl);
+      setURL(`http://${newUrl}`);
+      console.log(newUrl);
     });
     setTimeout(async()=>{
       incrementCount();
-      const res = await fetch('http://localhost:8101/ping');
+      const res = await fetch(api + '/ping');
       setMessage(await res.text());
     }, 2500);
   }, []);
   return (
     <div className="App">
-    <h1>{m} Hello World. {message}. How nice that you 
+    <h1>{m}. {message}. How nice that you 
     remembered {count}, after everything that's happened.</h1>
-    <QR value={url} />
+    <p><a href={url}>{url}</a> {globalThis.location.host}</p>
+    <QR value={`${url}:${htmlPort}`} size={240} />
     <Test />
     </div>
   );
