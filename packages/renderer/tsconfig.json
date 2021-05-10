@@ -9,7 +9,7 @@
       "/@/*": [
         "./src/*"
       ],
-      "/@commmon/*": ["../common/*"]
+      "/@common/*": ["../common/*"]
     },
     "lib": ["ESNext", "dom", "dom.iterable"]
   },
